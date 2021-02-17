@@ -18,13 +18,13 @@ import br.com.cgms.grandpabot.api.model.Mensagem;
 import br.com.cgms.grandpabot.domain.exception.NotFoundBusinessException;
 import br.com.cgms.grandpabot.domain.model.Contato;
 import br.com.cgms.grandpabot.domain.repository.ContatoRepository;
-import br.com.cgms.grandpabot.service.TelegramBot;
+import br.com.cgms.grandpabot.service.SigajusBot;
 
 @RestController
 @RequestMapping("/mensagens")
 public class MensagemController {
 	
-	@Autowired TelegramBot telegramBot;
+	@Autowired SigajusBot telegramBot;
 	@Autowired ContatoRepository contatoRepository;
 	
 	@PostMapping

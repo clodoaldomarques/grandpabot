@@ -24,7 +24,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import br.com.cgms.grandpabot.domain.model.Contato;
 import br.com.cgms.grandpabot.domain.repository.ContatoRepository;
 
-public class TelegramBot extends TelegramLongPollingBot {
+public class SigajusBot extends TelegramLongPollingBot {
 	
 	@Autowired ContatoRepository contatoRepository;
 	

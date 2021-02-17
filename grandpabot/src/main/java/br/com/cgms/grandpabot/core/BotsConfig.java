@@ -3,14 +3,14 @@ package br.com.cgms.grandpabot.core;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.cgms.grandpabot.service.TelegramBot;
+import br.com.cgms.grandpabot.service.SigajusBot;
 
 @Configuration
-public class TelegramBotConfig {
+public class BotsConfig {
 	
 	@Bean
-	public TelegramBot telegramBot() {
-		return new TelegramBot();
+	public SigajusBot sigajusBot() {
+		return new SigajusBot();
 	}
 
 }
