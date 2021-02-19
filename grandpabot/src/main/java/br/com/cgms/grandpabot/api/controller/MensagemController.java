@@ -1,10 +1,10 @@
 package br.com.cgms.grandpabot.api.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
+import br.com.cgms.grandpabot.service.GrandpaBot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,15 +18,17 @@ import br.com.cgms.grandpabot.api.model.Mensagem;
 import br.com.cgms.grandpabot.domain.exception.NotFoundBusinessException;
 import br.com.cgms.grandpabot.domain.model.Contato;
 import br.com.cgms.grandpabot.domain.repository.ContatoRepository;
-import br.com.cgms.grandpabot.service.SigajusBot;
 
 @RestController
 @RequestMapping("/mensagens")
 public class MensagemController {
 	
-	@Autowired SigajusBot telegramBot;
-	@Autowired ContatoRepository contatoRepository;
-	
+	@Autowired
+	GrandpaBot telegramBot;
+
+	@Autowired
+	ContatoRepository contatoRepository;
+
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	public void enviar(@Valid @RequestBody Mensagem mensagem) {
@@ -37,7 +39,7 @@ public class MensagemController {
 			throw new NotFoundBusinessException("Numero não encontrado");
 		}
 	}
-	
+
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	@RequestMapping("/todos")
