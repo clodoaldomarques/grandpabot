@@ -43,10 +43,10 @@ public class MensagemController {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	@RequestMapping("/todos")
-	public void enviarTodos(@Valid @RequestBody Mensagem mensagem) {
+	public void enviarTodos(@Valid @RequestBody String mensagem) {
 		try {
-			List<Contato> contatos = contatoRepository.findAll();
-			telegramBot.sendMessage(contatos, mensagem.getMensagem());
+			List<Contato> contatos = contatoRepository.findByBotDoCadastro(telegramBot.getBotUsername());
+			telegramBot.sendMessage(contatos, mensagem);
 		} catch (TelegramApiException e) {
 			throw new NotFoundBusinessException("Numero não encontrado");
 		}
